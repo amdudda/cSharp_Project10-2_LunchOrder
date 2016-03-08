@@ -83,6 +83,7 @@
             this.rdoSalad.TabStop = true;
             this.rdoSalad.Text = "Salad - $4.95";
             this.rdoSalad.UseVisualStyleBackColor = true;
+            this.rdoSalad.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
             // 
             // rdoPizza
             // 
@@ -94,6 +95,7 @@
             this.rdoPizza.TabStop = true;
             this.rdoPizza.Text = "Pizza - $5.95";
             this.rdoPizza.UseVisualStyleBackColor = true;
+            this.rdoPizza.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
             // 
             // rdoHamburger
             // 
@@ -105,6 +107,7 @@
             this.rdoHamburger.TabStop = true;
             this.rdoHamburger.Text = "Hamburger - $6.95";
             this.rdoHamburger.UseVisualStyleBackColor = true;
+            this.rdoHamburger.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
             // 
             // groupBox1
             // 
