@@ -227,6 +227,7 @@
             this.btnPlaceOrder.TabIndex = 4;
             this.btnPlaceOrder.Text = "Place &Order";
             this.btnPlaceOrder.UseVisualStyleBackColor = true;
+            this.btnPlaceOrder.Click += new System.EventHandler(this.btnPlaceOrder_Click);
             // 
             // btnExit
             // 
@@ -236,6 +237,7 @@
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // frmLunchOrder
             // 
@@ -250,6 +252,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmLunchOrder";
             this.Text = "Lunch Order";
+            this.Load += new System.EventHandler(this.frmLunchOrder_Load);
             this.gbxMainCourse.ResumeLayout(false);
             this.gbxMainCourse.PerformLayout();
             this.groupBox1.ResumeLayout(false);
