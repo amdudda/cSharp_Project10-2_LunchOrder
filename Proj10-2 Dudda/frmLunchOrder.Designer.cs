@@ -46,6 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnPlaceOrder = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.lbxOrder = new System.Windows.Forms.ListBox();
             this.gbxMainCourse.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbxOrderTotal.SuspendLayout();
@@ -242,11 +243,20 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // lbxOrder
+            // 
+            this.lbxOrder.FormattingEnabled = true;
+            this.lbxOrder.Location = new System.Drawing.Point(477, 54);
+            this.lbxOrder.Name = "lbxOrder";
+            this.lbxOrder.Size = new System.Drawing.Size(260, 173);
+            this.lbxOrder.TabIndex = 6;
+            // 
             // frmLunchOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 297);
+            this.ClientSize = new System.Drawing.Size(758, 297);
+            this.Controls.Add(this.lbxOrder);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnPlaceOrder);
             this.Controls.Add(this.gbxOrderTotal);
@@ -287,6 +297,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnPlaceOrder;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ListBox lbxOrder;
     }
 }
 

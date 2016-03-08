@@ -17,6 +17,8 @@ namespace Proj10_2_Dudda
         string[] pizzaOptions = { "Pepperoni", "Sausage", "Olives" };
         string[] saladOptions = { "Croutons", "Bacon bits", "Bread sticks" };
         double basePrice = 6.95;  // hamburger will be the default selection
+        // and an array to store the entire order as it accumulates
+        List<double[]> listOrders = new List<double[]>();
 
         public frmLunchOrder()
         {
@@ -76,11 +78,6 @@ namespace Proj10_2_Dudda
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            // clear main course selection
-            rdoHamburger.Checked = false;
-            rdoPizza.Checked = false;
-            rdoSalad.Checked = false;
-
             // base price is set globally
             // convert.toInt32 on a boolean converts true to 1.  let's take advantage of that!
             // https://msdn.microsoft.com/en-us/library/2cew9dz7(v=vs.110).aspx
@@ -98,6 +95,13 @@ namespace Proj10_2_Dudda
             txtTax.Text = tax.ToString("c");
             txtOrderTotal.Text = orderTotal.ToString("c");
 
+            // and update the listbox
+            addOrderToList();
+
+            // and clear main course selection now that we're ready for the next order
+            rdoHamburger.Checked = false;
+            rdoPizza.Checked = false;
+            rdoSalad.Checked = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -110,6 +114,49 @@ namespace Proj10_2_Dudda
             clearOrderTotals();
         }
 
-        
+        // a method to add an order to the list box and to the order array so a grand total can be calculated
+        private void addOrderToList() 
+        {
+            // stores an array of doubles representing the choices made so they can be retrieved later if needed
+            double[] currentOrder = new double[7];
+            
+            // populate the array
+            // start with the main course selection
+            if (rdoHamburger.Checked) currentOrder[0] = 0;
+            if (rdoPizza.Checked) currentOrder[0] = 1;
+            if (rdoSalad.Checked) currentOrder[0] = 2;
+            // add the sides
+            currentOrder[1] = Convert.ToDouble(chkOne.Checked);
+            currentOrder[2] = Convert.ToDouble(chkTwo.Checked);
+            currentOrder[3] = Convert.ToDouble(chkThree.Checked);
+            // and the order total info - strip off the leading dollar sign
+            currentOrder[4] = Convert.ToDouble(txtSubtotal.Text.Substring(1));
+            currentOrder[5] = Convert.ToDouble(txtTax.Text.Substring(1));
+            currentOrder[6] = Convert.ToDouble(txtOrderTotal.Text.Substring(1));
+
+            // and add the order to the arry of orders
+            listOrders.Add(currentOrder);
+
+            // also parse the order info and convert it to a user-friendly string for the listbox
+            string main = "";
+            if (rdoHamburger.Checked) main += "Hamburger with \n\r";
+            if (rdoPizza.Checked) main += "Pizza with \n";
+            if (rdoSalad.Checked) main += "Salad with \n";
+            
+            string sides = "";
+            if (chkOne.Checked) sides += "\t" + chkOne.Text;
+            if (chkTwo.Checked) sides += "\t" + chkTwo.Text;
+            if (chkThree.Checked) sides += "\t" + chkThree.Text;
+            if (sides == "") sides = "\tno side items";
+            sides += "\n";
+
+            string moneyinfo = "\tSubtotal: " + txtSubtotal.Text + "\n\tTax: " + txtTax.Text +
+                "\n\tOrder total: " + txtOrderTotal.Text;
+
+            string orderinfo = main + sides + moneyinfo;
+
+            // then add it to the list box showing all orders
+            lbxOrder.Items.Add(orderinfo);
+        }
     }
 }
