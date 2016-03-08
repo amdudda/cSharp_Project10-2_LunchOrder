@@ -131,6 +131,7 @@
             this.chkThree.TabIndex = 2;
             this.chkThree.Text = "French fries";
             this.chkThree.UseVisualStyleBackColor = true;
+            this.chkThree.CheckedChanged += new System.EventHandler(this.addons_CheckedChanged);
             // 
             // chkTwo
             // 
@@ -141,6 +142,7 @@
             this.chkTwo.TabIndex = 1;
             this.chkTwo.Text = "Ketchup, mustard, and mayo";
             this.chkTwo.UseVisualStyleBackColor = true;
+            this.chkTwo.CheckedChanged += new System.EventHandler(this.addons_CheckedChanged);
             // 
             // chkOne
             // 
@@ -151,6 +153,7 @@
             this.chkOne.TabIndex = 0;
             this.chkOne.Text = "Lettuce, tomato, and onions";
             this.chkOne.UseVisualStyleBackColor = true;
+            this.chkOne.CheckedChanged += new System.EventHandler(this.addons_CheckedChanged);
             // 
             // gbxOrderTotal
             // 

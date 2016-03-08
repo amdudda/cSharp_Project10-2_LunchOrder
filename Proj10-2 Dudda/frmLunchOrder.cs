@@ -23,12 +23,16 @@ namespace Proj10_2_Dudda
             InitializeComponent();
         }
 
+        // react to user changing which menu option is selected
         private void rdoMainCourse_CheckedChanged(object sender, EventArgs e)
         {
             // clear the checkboxes
             chkOne.Checked = false;
             chkTwo.Checked = false;
             chkThree.Checked = false;
+
+            // clear the text boxes, in case they aren't cleared already
+            clearOrderTotals();
 
             // identify which button is checked and update the checkbox labels to reflect the selected option
             // also update base price
@@ -49,6 +53,14 @@ namespace Proj10_2_Dudda
             }
         }
 
+        private void clearOrderTotals()
+        {
+            // clear the order total boxes
+            txtOrderTotal.Text = "";
+            txtSubtotal.Text = "";
+            txtTax.Text = "";
+        }
+
         private void updateAddOns(string[] addons)
         {
             chkOne.Text = addons[0];
@@ -64,6 +76,11 @@ namespace Proj10_2_Dudda
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
+            // clear main course selection
+            rdoHamburger.Checked = false;
+            rdoPizza.Checked = false;
+            rdoSalad.Checked = false;
+
             // base price is set globally
             // convert.toInt32 on a boolean converts true to 1.  let's take advantage of that!
             // https://msdn.microsoft.com/en-us/library/2cew9dz7(v=vs.110).aspx
@@ -86,6 +103,11 @@ namespace Proj10_2_Dudda
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void addons_CheckedChanged(object sender, EventArgs e)
+        {
+            clearOrderTotals();
         }
 
         
