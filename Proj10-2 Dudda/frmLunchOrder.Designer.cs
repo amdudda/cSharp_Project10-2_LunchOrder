@@ -33,11 +33,13 @@
             this.rdoSalad = new System.Windows.Forms.RadioButton();
             this.rdoPizza = new System.Windows.Forms.RadioButton();
             this.rdoHamburger = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbxAddOns = new System.Windows.Forms.GroupBox();
             this.chkThree = new System.Windows.Forms.CheckBox();
             this.chkTwo = new System.Windows.Forms.CheckBox();
             this.chkOne = new System.Windows.Forms.CheckBox();
             this.gbxOrderTotal = new System.Windows.Forms.GroupBox();
+            this.txtOrderTotal = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtItemTotal = new System.Windows.Forms.TextBox();
             this.txtTax = new System.Windows.Forms.TextBox();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
@@ -48,11 +50,9 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lbxOrder = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtOrderTotal = new System.Windows.Forms.TextBox();
             this.btnNewOrder = new System.Windows.Forms.Button();
             this.gbxMainCourse.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbxAddOns.SuspendLayout();
             this.gbxOrderTotal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +70,7 @@
             this.gbxMainCourse.Controls.Add(this.rdoSalad);
             this.gbxMainCourse.Controls.Add(this.rdoPizza);
             this.gbxMainCourse.Controls.Add(this.rdoHamburger);
-            this.gbxMainCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxMainCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxMainCourse.Location = new System.Drawing.Point(85, 46);
             this.gbxMainCourse.Name = "gbxMainCourse";
             this.gbxMainCourse.Size = new System.Drawing.Size(147, 96);
@@ -81,6 +81,7 @@
             // rdoSalad
             // 
             this.rdoSalad.AutoSize = true;
+            this.rdoSalad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoSalad.Location = new System.Drawing.Point(24, 68);
             this.rdoSalad.Name = "rdoSalad";
             this.rdoSalad.Size = new System.Drawing.Size(88, 17);
@@ -93,6 +94,7 @@
             // rdoPizza
             // 
             this.rdoPizza.AutoSize = true;
+            this.rdoPizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoPizza.Location = new System.Drawing.Point(24, 44);
             this.rdoPizza.Name = "rdoPizza";
             this.rdoPizza.Size = new System.Drawing.Size(86, 17);
@@ -105,6 +107,7 @@
             // rdoHamburger
             // 
             this.rdoHamburger.AutoSize = true;
+            this.rdoHamburger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoHamburger.Location = new System.Drawing.Point(24, 20);
             this.rdoHamburger.Name = "rdoHamburger";
             this.rdoHamburger.Size = new System.Drawing.Size(113, 17);
@@ -114,22 +117,23 @@
             this.rdoHamburger.UseVisualStyleBackColor = true;
             this.rdoHamburger.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
             // 
-            // groupBox1
+            // gbxAddOns
             // 
-            this.groupBox1.Controls.Add(this.chkThree);
-            this.groupBox1.Controls.Add(this.chkTwo);
-            this.groupBox1.Controls.Add(this.chkOne);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(268, 46);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 96);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add-on Items ($.75/each)";
+            this.gbxAddOns.Controls.Add(this.chkThree);
+            this.gbxAddOns.Controls.Add(this.chkTwo);
+            this.gbxAddOns.Controls.Add(this.chkOne);
+            this.gbxAddOns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxAddOns.Location = new System.Drawing.Point(268, 46);
+            this.gbxAddOns.Name = "gbxAddOns";
+            this.gbxAddOns.Size = new System.Drawing.Size(200, 96);
+            this.gbxAddOns.TabIndex = 2;
+            this.gbxAddOns.TabStop = false;
+            this.gbxAddOns.Text = "Add-on Items ($.75/each)";
             // 
             // chkThree
             // 
             this.chkThree.AutoSize = true;
+            this.chkThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkThree.Location = new System.Drawing.Point(27, 68);
             this.chkThree.Name = "chkThree";
             this.chkThree.Size = new System.Drawing.Size(81, 17);
@@ -141,6 +145,7 @@
             // chkTwo
             // 
             this.chkTwo.AutoSize = true;
+            this.chkTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTwo.Location = new System.Drawing.Point(27, 44);
             this.chkTwo.Name = "chkTwo";
             this.chkTwo.Size = new System.Drawing.Size(161, 17);
@@ -152,6 +157,7 @@
             // chkOne
             // 
             this.chkOne.AutoSize = true;
+            this.chkOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkOne.Location = new System.Drawing.Point(27, 20);
             this.chkOne.Name = "chkOne";
             this.chkOne.Size = new System.Drawing.Size(158, 17);
@@ -170,13 +176,32 @@
             this.gbxOrderTotal.Controls.Add(this.label4);
             this.gbxOrderTotal.Controls.Add(this.label3);
             this.gbxOrderTotal.Controls.Add(this.label2);
-            this.gbxOrderTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxOrderTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxOrderTotal.Location = new System.Drawing.Point(85, 161);
             this.gbxOrderTotal.Name = "gbxOrderTotal";
             this.gbxOrderTotal.Size = new System.Drawing.Size(265, 130);
             this.gbxOrderTotal.TabIndex = 3;
             this.gbxOrderTotal.TabStop = false;
             this.gbxOrderTotal.Text = "Order total";
+            // 
+            // txtOrderTotal
+            // 
+            this.txtOrderTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOrderTotal.Location = new System.Drawing.Point(128, 97);
+            this.txtOrderTotal.Name = "txtOrderTotal";
+            this.txtOrderTotal.ReadOnly = true;
+            this.txtOrderTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtOrderTotal.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(45, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Order total:";
             // 
             // txtItemTotal
             // 
@@ -205,6 +230,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(63, 74);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
@@ -214,7 +240,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 48);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(53, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 1;
@@ -223,7 +250,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 22);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(67, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 0;
@@ -260,28 +288,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(19, 305);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 7;
             this.label5.Text = "Order details:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(56, 100);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Order total:";
-            // 
-            // txtOrderTotal
-            // 
-            this.txtOrderTotal.Location = new System.Drawing.Point(128, 97);
-            this.txtOrderTotal.Name = "txtOrderTotal";
-            this.txtOrderTotal.ReadOnly = true;
-            this.txtOrderTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtOrderTotal.TabIndex = 7;
             // 
             // btnNewOrder
             // 
@@ -304,7 +316,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnPlaceOrder);
             this.Controls.Add(this.gbxOrderTotal);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbxAddOns);
             this.Controls.Add(this.gbxMainCourse);
             this.Controls.Add(this.label1);
             this.Name = "frmLunchOrder";
@@ -312,8 +324,8 @@
             this.Load += new System.EventHandler(this.frmLunchOrder_Load);
             this.gbxMainCourse.ResumeLayout(false);
             this.gbxMainCourse.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbxAddOns.ResumeLayout(false);
+            this.gbxAddOns.PerformLayout();
             this.gbxOrderTotal.ResumeLayout(false);
             this.gbxOrderTotal.PerformLayout();
             this.ResumeLayout(false);
@@ -328,7 +340,7 @@
         private System.Windows.Forms.RadioButton rdoSalad;
         private System.Windows.Forms.RadioButton rdoPizza;
         private System.Windows.Forms.RadioButton rdoHamburger;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbxAddOns;
         private System.Windows.Forms.CheckBox chkThree;
         private System.Windows.Forms.CheckBox chkTwo;
         private System.Windows.Forms.CheckBox chkOne;

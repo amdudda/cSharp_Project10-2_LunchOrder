@@ -95,6 +95,7 @@ namespace Proj10_2_Dudda
         {
             // set the hambruger option as the selected option.
             rdoHamburger.Checked = true;
+            
         }
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
