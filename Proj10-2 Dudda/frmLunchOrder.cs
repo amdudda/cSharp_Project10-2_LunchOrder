@@ -34,7 +34,7 @@ namespace Proj10_2_Dudda
             chkThree.Checked = false;
 
             // clear the text boxes, in case they aren't cleared already
-            clearOrderTotals();
+            clearItemTotals();
 
             // identify which button is checked and update the checkbox labels to reflect the selected option
             // also update base price
@@ -55,12 +55,33 @@ namespace Proj10_2_Dudda
             }
         }
 
-        private void clearOrderTotals()
+        private void clearItemTotals()
         {
             // clear the order total boxes
-            txtOrderTotal.Text = "";
+            txtItemTotal.Text = "";
             txtSubtotal.Text = "";
             txtTax.Text = "";
+        }
+
+        //this clears the form so the user can start a brand-new order
+        private void clearAllOrders()
+        {
+            // clear the text boxes
+            clearItemTotals();
+            txtOrderTotal.Text = "";
+
+            // clear the radio buttons and checkboxes
+            rdoHamburger.Checked = false;
+            rdoPizza.Checked = false;
+            rdoSalad.Checked = false;
+            chkOne.Checked = false;
+            chkTwo.Checked = false;
+            chkThree.Checked = false;
+
+            // clear the array of orders and the listbox
+            listOrders.Clear();
+            lbxOrder.Items.Clear();
+
         }
 
         private void updateAddOns(string[] addons)
@@ -93,15 +114,15 @@ namespace Proj10_2_Dudda
             // update the form with the results converted to currency format
             txtSubtotal.Text = subtotal.ToString("c");
             txtTax.Text = tax.ToString("c");
-            txtOrderTotal.Text = orderTotal.ToString("c");
+            txtItemTotal.Text = orderTotal.ToString("c");
 
             // and update the listbox
             addOrderToList();
-
+/*
             // and clear main course selection now that we're ready for the next order
             rdoHamburger.Checked = false;
             rdoPizza.Checked = false;
-            rdoSalad.Checked = false;
+            rdoSalad.Checked = false; */
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -111,7 +132,7 @@ namespace Proj10_2_Dudda
 
         private void addons_CheckedChanged(object sender, EventArgs e)
         {
-            clearOrderTotals();
+            clearItemTotals();
         }
 
         // a method to add an order to the list box and to the order array so a grand total can be calculated
@@ -132,31 +153,49 @@ namespace Proj10_2_Dudda
             // and the order total info - strip off the leading dollar sign
             currentOrder[4] = Convert.ToDouble(txtSubtotal.Text.Substring(1));
             currentOrder[5] = Convert.ToDouble(txtTax.Text.Substring(1));
-            currentOrder[6] = Convert.ToDouble(txtOrderTotal.Text.Substring(1));
+            currentOrder[6] = Convert.ToDouble(txtItemTotal.Text.Substring(1));
 
             // and add the order to the arry of orders
             listOrders.Add(currentOrder);
 
             // also parse the order info and convert it to a user-friendly string for the listbox
             string main = "";
-            if (rdoHamburger.Checked) main += "Hamburger with \n\r";
-            if (rdoPizza.Checked) main += "Pizza with \n";
-            if (rdoSalad.Checked) main += "Salad with \n";
+            if (rdoHamburger.Checked) main += "Hamburger with:";
+            if (rdoPizza.Checked) main += "Pizza with:";
+            if (rdoSalad.Checked) main += "Salad with:";
             
             string sides = "";
-            if (chkOne.Checked) sides += "\t" + chkOne.Text;
-            if (chkTwo.Checked) sides += "\t" + chkTwo.Text;
-            if (chkThree.Checked) sides += "\t" + chkThree.Text;
-            if (sides == "") sides = "\tno side items";
-            sides += "\n";
+            if (chkOne.Checked) sides += " " + chkOne.Text.ToLower() + ";";
+            if (chkTwo.Checked)
+            {
+                sides += " " + chkTwo.Text.ToLower() + ";";
+            }
+            if (chkThree.Checked)
+            {
+                sides += " " + chkThree.Text.ToLower() + ";";
+            }
+            if (sides == "") sides = "no side items;";
 
-            string moneyinfo = "\tSubtotal: " + txtSubtotal.Text + "\n\tTax: " + txtTax.Text +
-                "\n\tOrder total: " + txtOrderTotal.Text;
+            string moneyinfo = " Line item total: " + txtItemTotal.Text;
 
             string orderinfo = main + sides + moneyinfo;
 
             // then add it to the list box showing all orders
             lbxOrder.Items.Add(orderinfo);
+
+            // also loop through our orders and generate a grand total
+            double grandTotal = 0;
+            foreach (double[] order in listOrders) 
+            {
+                grandTotal += order[6];  // sixth value is the order total.
+            }
+            txtOrderTotal.Text = grandTotal.ToString("c");
+
+        }
+
+        private void btnNewOrder_Click(object sender, EventArgs e)
+        {
+            clearAllOrders();
         }
     }
 }

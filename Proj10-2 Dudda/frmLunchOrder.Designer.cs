@@ -38,7 +38,7 @@
             this.chkTwo = new System.Windows.Forms.CheckBox();
             this.chkOne = new System.Windows.Forms.CheckBox();
             this.gbxOrderTotal = new System.Windows.Forms.GroupBox();
-            this.txtOrderTotal = new System.Windows.Forms.TextBox();
+            this.txtItemTotal = new System.Windows.Forms.TextBox();
             this.txtTax = new System.Windows.Forms.TextBox();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,6 +47,10 @@
             this.btnPlaceOrder = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lbxOrder = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtOrderTotal = new System.Windows.Forms.TextBox();
+            this.btnNewOrder = new System.Windows.Forms.Button();
             this.gbxMainCourse.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbxOrderTotal.SuspendLayout();
@@ -67,7 +71,7 @@
             this.gbxMainCourse.Controls.Add(this.rdoPizza);
             this.gbxMainCourse.Controls.Add(this.rdoHamburger);
             this.gbxMainCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxMainCourse.Location = new System.Drawing.Point(46, 46);
+            this.gbxMainCourse.Location = new System.Drawing.Point(85, 46);
             this.gbxMainCourse.Name = "gbxMainCourse";
             this.gbxMainCourse.Size = new System.Drawing.Size(147, 96);
             this.gbxMainCourse.TabIndex = 1;
@@ -82,7 +86,7 @@
             this.rdoSalad.Size = new System.Drawing.Size(88, 17);
             this.rdoSalad.TabIndex = 2;
             this.rdoSalad.TabStop = true;
-            this.rdoSalad.Text = "Salad - $4.95";
+            this.rdoSalad.Text = "&Salad - $4.95";
             this.rdoSalad.UseVisualStyleBackColor = true;
             this.rdoSalad.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
             // 
@@ -94,7 +98,7 @@
             this.rdoPizza.Size = new System.Drawing.Size(86, 17);
             this.rdoPizza.TabIndex = 1;
             this.rdoPizza.TabStop = true;
-            this.rdoPizza.Text = "Pizza - $5.95";
+            this.rdoPizza.Text = "&Pizza - $5.95";
             this.rdoPizza.UseVisualStyleBackColor = true;
             this.rdoPizza.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
             // 
@@ -106,7 +110,7 @@
             this.rdoHamburger.Size = new System.Drawing.Size(113, 17);
             this.rdoHamburger.TabIndex = 0;
             this.rdoHamburger.TabStop = true;
-            this.rdoHamburger.Text = "Hamburger - $6.95";
+            this.rdoHamburger.Text = "&Hamburger - $6.95";
             this.rdoHamburger.UseVisualStyleBackColor = true;
             this.rdoHamburger.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
             // 
@@ -116,7 +120,7 @@
             this.groupBox1.Controls.Add(this.chkTwo);
             this.groupBox1.Controls.Add(this.chkOne);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(229, 46);
+            this.groupBox1.Location = new System.Drawing.Point(268, 46);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 96);
             this.groupBox1.TabIndex = 2;
@@ -159,26 +163,28 @@
             // gbxOrderTotal
             // 
             this.gbxOrderTotal.Controls.Add(this.txtOrderTotal);
+            this.gbxOrderTotal.Controls.Add(this.label6);
+            this.gbxOrderTotal.Controls.Add(this.txtItemTotal);
             this.gbxOrderTotal.Controls.Add(this.txtTax);
             this.gbxOrderTotal.Controls.Add(this.txtSubtotal);
             this.gbxOrderTotal.Controls.Add(this.label4);
             this.gbxOrderTotal.Controls.Add(this.label3);
             this.gbxOrderTotal.Controls.Add(this.label2);
             this.gbxOrderTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxOrderTotal.Location = new System.Drawing.Point(46, 161);
+            this.gbxOrderTotal.Location = new System.Drawing.Point(85, 161);
             this.gbxOrderTotal.Name = "gbxOrderTotal";
-            this.gbxOrderTotal.Size = new System.Drawing.Size(265, 107);
+            this.gbxOrderTotal.Size = new System.Drawing.Size(265, 130);
             this.gbxOrderTotal.TabIndex = 3;
             this.gbxOrderTotal.TabStop = false;
             this.gbxOrderTotal.Text = "Order total";
             // 
-            // txtOrderTotal
+            // txtItemTotal
             // 
-            this.txtOrderTotal.Location = new System.Drawing.Point(128, 71);
-            this.txtOrderTotal.Name = "txtOrderTotal";
-            this.txtOrderTotal.ReadOnly = true;
-            this.txtOrderTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtOrderTotal.TabIndex = 5;
+            this.txtItemTotal.Location = new System.Drawing.Point(128, 71);
+            this.txtItemTotal.Name = "txtItemTotal";
+            this.txtItemTotal.ReadOnly = true;
+            this.txtItemTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtItemTotal.TabIndex = 5;
             // 
             // txtTax
             // 
@@ -201,9 +207,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(63, 74);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Order total:";
+            this.label4.Text = "Item total:";
             // 
             // label3
             // 
@@ -225,20 +231,20 @@
             // 
             // btnPlaceOrder
             // 
-            this.btnPlaceOrder.Location = new System.Drawing.Point(339, 161);
+            this.btnPlaceOrder.Location = new System.Drawing.Point(378, 178);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(75, 23);
             this.btnPlaceOrder.TabIndex = 4;
-            this.btnPlaceOrder.Text = "Place &Order";
+            this.btnPlaceOrder.Text = "Add to &Order";
             this.btnPlaceOrder.UseVisualStyleBackColor = true;
             this.btnPlaceOrder.Click += new System.EventHandler(this.btnPlaceOrder_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(339, 224);
+            this.btnExit.Location = new System.Drawing.Point(378, 256);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 5;
+            this.btnExit.TabIndex = 6;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -246,16 +252,54 @@
             // lbxOrder
             // 
             this.lbxOrder.FormattingEnabled = true;
-            this.lbxOrder.Location = new System.Drawing.Point(477, 54);
+            this.lbxOrder.Location = new System.Drawing.Point(22, 321);
             this.lbxOrder.Name = "lbxOrder";
-            this.lbxOrder.Size = new System.Drawing.Size(260, 173);
-            this.lbxOrder.TabIndex = 6;
+            this.lbxOrder.Size = new System.Drawing.Size(526, 134);
+            this.lbxOrder.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 305);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Order details:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(56, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Order total:";
+            // 
+            // txtOrderTotal
+            // 
+            this.txtOrderTotal.Location = new System.Drawing.Point(128, 97);
+            this.txtOrderTotal.Name = "txtOrderTotal";
+            this.txtOrderTotal.ReadOnly = true;
+            this.txtOrderTotal.Size = new System.Drawing.Size(100, 20);
+            this.txtOrderTotal.TabIndex = 7;
+            // 
+            // btnNewOrder
+            // 
+            this.btnNewOrder.Location = new System.Drawing.Point(378, 217);
+            this.btnNewOrder.Name = "btnNewOrder";
+            this.btnNewOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnNewOrder.TabIndex = 5;
+            this.btnNewOrder.Text = "&New Order";
+            this.btnNewOrder.UseVisualStyleBackColor = true;
+            this.btnNewOrder.Click += new System.EventHandler(this.btnNewOrder_Click);
             // 
             // frmLunchOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 297);
+            this.ClientSize = new System.Drawing.Size(559, 476);
+            this.Controls.Add(this.btnNewOrder);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lbxOrder);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnPlaceOrder);
@@ -289,7 +333,7 @@
         private System.Windows.Forms.CheckBox chkTwo;
         private System.Windows.Forms.CheckBox chkOne;
         private System.Windows.Forms.GroupBox gbxOrderTotal;
-        private System.Windows.Forms.TextBox txtOrderTotal;
+        private System.Windows.Forms.TextBox txtItemTotal;
         private System.Windows.Forms.TextBox txtTax;
         private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.Label label4;
@@ -298,6 +342,10 @@
         private System.Windows.Forms.Button btnPlaceOrder;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ListBox lbxOrder;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtOrderTotal;
+        private System.Windows.Forms.Button btnNewOrder;
     }
 }
 
