@@ -51,6 +51,7 @@
             this.lbxOrder = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnNewOrder = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbxMainCourse.SuspendLayout();
             this.gbxAddOns.SuspendLayout();
             this.gbxOrderTotal.SuspendLayout();
@@ -261,7 +262,7 @@
             // 
             this.btnPlaceOrder.Location = new System.Drawing.Point(378, 178);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
-            this.btnPlaceOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnPlaceOrder.Size = new System.Drawing.Size(90, 23);
             this.btnPlaceOrder.TabIndex = 4;
             this.btnPlaceOrder.Text = "Add to &Order";
             this.btnPlaceOrder.UseVisualStyleBackColor = true;
@@ -269,9 +270,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(378, 256);
+            this.btnExit.Location = new System.Drawing.Point(378, 268);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(90, 23);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -297,19 +298,30 @@
             // 
             // btnNewOrder
             // 
-            this.btnNewOrder.Location = new System.Drawing.Point(378, 217);
+            this.btnNewOrder.Location = new System.Drawing.Point(378, 208);
             this.btnNewOrder.Name = "btnNewOrder";
-            this.btnNewOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnNewOrder.Size = new System.Drawing.Size(90, 23);
             this.btnNewOrder.TabIndex = 5;
             this.btnNewOrder.Text = "&New Order";
             this.btnNewOrder.UseVisualStyleBackColor = true;
             this.btnNewOrder.Click += new System.EventHandler(this.btnNewOrder_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(378, 238);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "&Remove Item";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmLunchOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 476);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnNewOrder);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbxOrder);
@@ -358,6 +370,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtOrderTotal;
         private System.Windows.Forms.Button btnNewOrder;
+        private System.Windows.Forms.Button button1;
     }
 }
 

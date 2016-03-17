@@ -100,12 +100,45 @@ namespace Proj10_2_Dudda
 
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
+            
+            // there isn't any user input that needs to be parsed or validated, so there shouldn't  
+            // be a need for anything more elaborate than a generic try-catch block and an overflow error
+            try
+            {
+                // debugging:  throw new OverflowException();
+                // update pricing info
+                updatePriceInfo();
+                // and update the listbox
+                addOrderToList();
+            }
+            catch (OverflowException)
+            {
+                string msg = "It appears that your order has gotten too large.  Either start a 'new' order " +
+                    "or delete some unneeded line items to continue.";
+                string caption = "Order too large.";
+
+                MessageBox.Show(msg, caption, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            catch (Exception ex)
+            {
+                // give the user an error message that isn't uselessly cryptic.
+                string msg = "An error has occurred.  You can share the details below with your IT staff to assist in troubleshooting:\n";
+                msg += ex.Message.ToString() + "\n";
+                msg += ex.ToString();
+                string caption = "Error";
+
+                MessageBox.Show(msg, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void updatePriceInfo()
+        {
             // base price is set globally
             // convert.toInt32 on a boolean converts true to 1.  let's take advantage of that!
             // https://msdn.microsoft.com/en-us/library/2cew9dz7(v=vs.110).aspx
             int numberOfSides = Convert.ToInt32(chkOne.Checked) + Convert.ToInt32(chkTwo.Checked) +
                 Convert.ToInt32(chkThree.Checked);
-            
+
             // figure out the subtotal and tax
             double subtotal = basePrice + (numberOfSides * 0.75);
             double tax = subtotal * 0.0775;  // 7.75% tax rate
@@ -116,14 +149,6 @@ namespace Proj10_2_Dudda
             txtSubtotal.Text = subtotal.ToString("c");
             txtTax.Text = tax.ToString("c");
             txtItemTotal.Text = orderTotal.ToString("c");
-
-            // and update the listbox
-            addOrderToList();
-/*
-            // and clear main course selection now that we're ready for the next order
-            rdoHamburger.Checked = false;
-            rdoPizza.Checked = false;
-            rdoSalad.Checked = false; */
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -160,11 +185,23 @@ namespace Proj10_2_Dudda
             listOrders.Add(currentOrder);
 
             // also parse the order info and convert it to a user-friendly string for the listbox
+            string orderinfo = StringifyOrderInfo();
+
+            // then add it to the list box showing all orders
+            lbxOrder.Items.Add(orderinfo);
+
+            // also generate a grand total
+            updateOrderTotal();
+
+        }
+
+        private string StringifyOrderInfo()
+        {
             string main = "";
             if (rdoHamburger.Checked) main += "Hamburger with:";
             if (rdoPizza.Checked) main += "Pizza with:";
             if (rdoSalad.Checked) main += "Salad with:";
-            
+
             string sides = "";
             if (chkOne.Checked) sides += " " + chkOne.Text.ToLower() + ";";
             if (chkTwo.Checked)
@@ -180,23 +217,42 @@ namespace Proj10_2_Dudda
             string moneyinfo = " Line item total: " + txtItemTotal.Text;
 
             string orderinfo = main + sides + moneyinfo;
+            return orderinfo;
+        }
 
-            // then add it to the list box showing all orders
-            lbxOrder.Items.Add(orderinfo);
-
-            // also loop through our orders and generate a grand total
+        private void updateOrderTotal()
+        {
             double grandTotal = 0;
-            foreach (double[] order in listOrders) 
+            foreach (double[] order in listOrders)
             {
                 grandTotal += order[6];  // sixth value is the order total.
             }
             txtOrderTotal.Text = grandTotal.ToString("c");
-
         }
 
         private void btnNewOrder_Click(object sender, EventArgs e)
         {
             clearAllOrders();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int indexToRemove = lbxOrder.SelectedIndex;  // nb: -1 means no item selected.
+            // MessageBox.Show("selected index is: " + indexToRemove);
+            // notify the user if no item is selected
+            if (indexToRemove == -1)
+            {
+                MessageBox.Show("You must select a line item to remove.", "No Line Selected");
+            }
+            else  // OK to proceed with removal
+            {
+                // remove entry from listbox and from array of orders
+                lbxOrder.Items.RemoveAt(indexToRemove);
+                listOrders.RemoveAt(indexToRemove);
+
+                // and recalculate the order total
+                updateOrderTotal();
+            }
         }
     }
 }
