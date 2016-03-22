@@ -38,6 +38,7 @@ namespace Proj10_2_Dudda
 
             // identify which button is checked and update the checkbox labels to reflect the selected option
             // also update base price
+            // TODO can I use Tag attribute and an interation to figure this out???
             if (rdoHamburger.Checked)
             {
                 updateAddOns(hambOptions);
@@ -77,6 +78,7 @@ namespace Proj10_2_Dudda
             chkOne.Checked = false;
             chkTwo.Checked = false;
             chkThree.Checked = false;
+
 
             // clear the array of orders and the listbox
             listOrders.Clear();
@@ -235,7 +237,7 @@ namespace Proj10_2_Dudda
             clearAllOrders();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnRemoveItem_Click(object sender, EventArgs e)
         {
             int indexToRemove = lbxOrder.SelectedIndex;  // nb: -1 means no item selected.
             // MessageBox.Show("selected index is: " + indexToRemove);

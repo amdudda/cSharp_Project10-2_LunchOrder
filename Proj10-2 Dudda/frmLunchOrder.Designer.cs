@@ -51,7 +51,7 @@
             this.lbxOrder = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnNewOrder = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRemoveItem = new System.Windows.Forms.Button();
             this.gbxMainCourse.SuspendLayout();
             this.gbxAddOns.SuspendLayout();
             this.gbxOrderTotal.SuspendLayout();
@@ -306,22 +306,22 @@
             this.btnNewOrder.UseVisualStyleBackColor = true;
             this.btnNewOrder.Click += new System.EventHandler(this.btnNewOrder_Click);
             // 
-            // button1
+            // btnRemoveItem
             // 
-            this.button1.Location = new System.Drawing.Point(378, 238);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "&Remove Item";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRemoveItem.Location = new System.Drawing.Point(378, 238);
+            this.btnRemoveItem.Name = "btnRemoveItem";
+            this.btnRemoveItem.Size = new System.Drawing.Size(90, 23);
+            this.btnRemoveItem.TabIndex = 9;
+            this.btnRemoveItem.Text = "&Remove Item";
+            this.btnRemoveItem.UseVisualStyleBackColor = true;
+            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
             // 
             // frmLunchOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(559, 476);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRemoveItem);
             this.Controls.Add(this.btnNewOrder);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbxOrder);
@@ -370,7 +370,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtOrderTotal;
         private System.Windows.Forms.Button btnNewOrder;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRemoveItem;
     }
 }
 
