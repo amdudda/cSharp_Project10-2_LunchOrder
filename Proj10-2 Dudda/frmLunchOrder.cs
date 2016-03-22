@@ -71,15 +71,12 @@ namespace Proj10_2_Dudda
             clearItemTotals();
             txtOrderTotal.Text = "";
 
-            // clear the radio buttons and checkboxes
-            rdoHamburger.Checked = false;
-            rdoPizza.Checked = false;
-            rdoSalad.Checked = false;
-            chkOne.Checked = false;
-            chkTwo.Checked = false;
-            chkThree.Checked = false;
-
-
+            // clear the radio buttons and checkboxes - each groupbox has only one type of control
+            foreach (RadioButton rb in gbxMainCourse.Controls)
+                rb.Checked = false;
+            foreach (CheckBox cb in gbxAddOns.Controls)
+                cb.Checked = false;
+            
             // clear the array of orders and the listbox
             listOrders.Clear();
             lbxOrder.Items.Clear();
@@ -88,9 +85,12 @@ namespace Proj10_2_Dudda
 
         private void updateAddOns(string[] addons)
         {
-            chkOne.Text = addons[0];
-            chkTwo.Text = addons[1];
-            chkThree.Text = addons[2];
+            int i = 0;
+            foreach (CheckBox c in gbxAddOns.Controls)
+            {
+                c.Text = addons[i];
+                i++;
+            }
         }
 
         private void frmLunchOrder_Load(object sender, EventArgs e)
