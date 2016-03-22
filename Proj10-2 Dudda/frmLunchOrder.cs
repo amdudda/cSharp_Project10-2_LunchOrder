@@ -13,9 +13,14 @@ namespace Proj10_2_Dudda
     public partial class frmLunchOrder : Form
     {
         // store the check box labels as arrays to make them easy to reference and update
-        string[] hambOptions = { "Lettuce, tomato, and onions", "Ketchup, mustard, and mayo", "French fries" };
-        string[] pizzaOptions = { "Pepperoni", "Sausage", "Olives" };
-        string[] saladOptions = { "Croutons", "Bacon bits", "Bread sticks" };
+        static string[] hambOptions = { "Lettuce, tomato, and onions", "Ketchup, mustard, and mayo", "French fries" };
+        static string[] pizzaOptions = { "Pepperoni", "Sausage", "Olives" };
+        static string[] saladOptions = { "Croutons", "Bacon bits", "Bread sticks" };
+        Dictionary<string[], double> priceinfo =  new Dictionary<string[],double>() { 
+                                                      { hambOptions, 6.95 },
+                                                      { pizzaOptions, 5.95 },
+                                                      { saladOptions, 4.95 }
+                                                 };
         double basePrice = 6.95;  // hamburger will be the default selection
         // and an array to store the entire order as it accumulates
         List<double[]> listOrders = new List<double[]>();
@@ -23,6 +28,10 @@ namespace Proj10_2_Dudda
         public frmLunchOrder()
         {
             InitializeComponent();
+            // add tags to radiobuttons
+            rdoHamburger.Tag = hambOptions;
+            rdoPizza.Tag = pizzaOptions;
+            rdoSalad.Tag = saladOptions;
         }
 
         // react to user changing which menu option is selected
@@ -38,21 +47,16 @@ namespace Proj10_2_Dudda
 
             // identify which button is checked and update the checkbox labels to reflect the selected option
             // also update base price
-            // TODO can I use Tag attribute and an interation to figure this out???
-            if (rdoHamburger.Checked)
+            // use Tag attribute and an interation to figure this out.
+            foreach (RadioButton rb in gbxMainCourse.Controls)
             {
-                updateAddOns(hambOptions);
-                basePrice = 6.95;
-            }
-            if (rdoPizza.Checked)
-            {
-                updateAddOns(pizzaOptions);
-                basePrice = 5.95;
-            }
-            if (rdoSalad.Checked)
-            {
-                updateAddOns(saladOptions);
-                basePrice = 4.95;
+                if (rb.Checked)
+                {
+                    string[] toUpdate = (string[]) rb.Tag;
+                    updateAddOns(toUpdate);
+                    basePrice = priceinfo[toUpdate];
+                    break; // we've found our item, break out of the loop.
+                }
             }
         }
 
@@ -67,6 +71,17 @@ namespace Proj10_2_Dudda
         //this clears the form so the user can start a brand-new order
         private void clearAllOrders()
         {
+            // clear user input
+            clearInput();
+            
+            // clear the array of orders and the listbox
+            listOrders.Clear();
+            lbxOrder.Items.Clear();
+
+        }
+
+        private void clearInput()
+        {
             // clear the text boxes
             clearItemTotals();
             txtOrderTotal.Text = "";
@@ -76,11 +91,6 @@ namespace Proj10_2_Dudda
                 rb.Checked = false;
             foreach (CheckBox cb in gbxAddOns.Controls)
                 cb.Checked = false;
-            
-            // clear the array of orders and the listbox
-            listOrders.Clear();
-            lbxOrder.Items.Clear();
-
         }
 
         private void updateAddOns(string[] addons)
@@ -136,10 +146,12 @@ namespace Proj10_2_Dudda
         private void updatePriceInfo()
         {
             // base price is set globally
-            // convert.toInt32 on a boolean converts true to 1.  let's take advantage of that!
-            // https://msdn.microsoft.com/en-us/library/2cew9dz7(v=vs.110).aspx
-            int numberOfSides = Convert.ToInt32(chkOne.Checked) + Convert.ToInt32(chkTwo.Checked) +
-                Convert.ToInt32(chkThree.Checked);
+            int numberOfSides = 0;
+            foreach (CheckBox cb in gbxAddOns.Controls)
+            {
+                if (cb.Checked) numberOfSides++;
+            }
+            
 
             // figure out the subtotal and tax
             double subtotal = basePrice + (numberOfSides * 0.75);
