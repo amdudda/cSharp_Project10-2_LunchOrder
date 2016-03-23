@@ -28,6 +28,10 @@ namespace Proj10_2_Dudda
         public frmLunchOrder()
         {
             InitializeComponent();
+        }
+        
+        private void frmLunchOrder_Load(object sender, EventArgs e)
+        {
             // add tags to radiobuttons
             rdoHamburger.Tag = hambOptions;
             rdoPizza.Tag = pizzaOptions;
@@ -103,18 +107,10 @@ namespace Proj10_2_Dudda
             }
         }
 
-        private void frmLunchOrder_Load(object sender, EventArgs e)
-        {
-            // set the hambruger option as the selected option.
-            rdoHamburger.Checked = true;
-            
-        }
-
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            
             // there isn't any user input that needs to be parsed or validated, so there shouldn't  
-            // be a need for anything more elaborate than a generic try-catch block and an overflow error
+            // be a need for anything more elaborate than a generic try-catch block and an overflow error block
             try
             {
                 // debugging:  throw new OverflowException();
@@ -247,6 +243,8 @@ namespace Proj10_2_Dudda
         private void btnNewOrder_Click(object sender, EventArgs e)
         {
             clearAllOrders();
+            // set the hambruger option as the selected option.
+            rdoHamburger.Checked = true;
         }
 
         private void btnRemoveItem_Click(object sender, EventArgs e)

@@ -87,7 +87,6 @@
             this.rdoSalad.Name = "rdoSalad";
             this.rdoSalad.Size = new System.Drawing.Size(88, 17);
             this.rdoSalad.TabIndex = 2;
-            this.rdoSalad.TabStop = true;
             this.rdoSalad.Text = "&Salad - $4.95";
             this.rdoSalad.UseVisualStyleBackColor = true;
             this.rdoSalad.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
@@ -100,7 +99,6 @@
             this.rdoPizza.Name = "rdoPizza";
             this.rdoPizza.Size = new System.Drawing.Size(86, 17);
             this.rdoPizza.TabIndex = 1;
-            this.rdoPizza.TabStop = true;
             this.rdoPizza.Text = "&Pizza - $5.95";
             this.rdoPizza.UseVisualStyleBackColor = true;
             this.rdoPizza.CheckedChanged += new System.EventHandler(this.rdoMainCourse_CheckedChanged);
@@ -108,6 +106,7 @@
             // rdoHamburger
             // 
             this.rdoHamburger.AutoSize = true;
+            this.rdoHamburger.Checked = true;
             this.rdoHamburger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoHamburger.Location = new System.Drawing.Point(24, 20);
             this.rdoHamburger.Name = "rdoHamburger";
@@ -198,7 +197,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(45, 100);
+            this.label6.Location = new System.Drawing.Point(52, 100);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 13);
             this.label6.TabIndex = 6;
@@ -232,17 +231,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(63, 74);
+            this.label4.Location = new System.Drawing.Point(48, 74);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Item total:";
+            this.label4.Text = "Line item total:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(53, 48);
+            this.label3.Location = new System.Drawing.Point(60, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 1;
@@ -252,7 +251,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(67, 22);
+            this.label2.Location = new System.Drawing.Point(74, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 0;
